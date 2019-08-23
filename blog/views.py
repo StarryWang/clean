@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect
 def index(request):
 	post_list = Aritcle.objects.all().order_by('-publish_data')[0:3]
 	context = {'post_list': post_list, 'num': 1}
-	return render(request, 'blog/index.html', context)
+	return render(request, 'index.html', context)
 
 
 def page_detail(request, blog_id):
