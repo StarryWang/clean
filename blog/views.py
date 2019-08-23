@@ -20,19 +20,19 @@ def page_detail(request, blog_id):
 	post = Aritcle.objects.get(pk=blog_id)
 	post.content = markdown2.markdown(post.content)
 	context = {'post': post}
-	return render(request, 'blog/post.html', context)
+	return render(request, 'post.html', context)
 
 
 def about(request):
-	return render(request, 'blog/about.html')
+	return render(request, 'about.html')
 
 
 def sub_index(request):
-	return render(request, 'blog/sub_index.html')
+	return render(request, 'sub_index.html')
 
 
 def contact(request):
-	return render(request, 'blog/contact.html')
+	return render(request, 'contact.html')
 
 
 def blogs(request):
@@ -60,7 +60,7 @@ def blogs(request):
 	else:
 		previous_page = page
 	context = {'post_list': curr_page_list, 'next_page': next_page, 'previous_page': previous_page, 'page_num': range(1, page_num + 1)}
-	return render(request, 'blog/blog_index.html', context)
+	return render(request, 'blog_index.html', context)
 
 
 def post_share(request, post_id):
@@ -80,7 +80,7 @@ def post_share(request, post_id):
 
 	context = {'post': post, 'form': form, 'sent': sent}
 	print('111111')
-	return render(request, 'blog/blog_index.html', context)
+	return render(request, 'blog_index.html', context)
 
 
 def edit(request, blog_id):
@@ -95,4 +95,4 @@ def edit(request, blog_id):
 			return HttpResponseRedirect(reverse('blog:post', args=[blog_id]))
 
 	context = {'post': post}
-	return render(request, 'blog/edit.html', context)
+	return render(request, 'edit.html', context)
